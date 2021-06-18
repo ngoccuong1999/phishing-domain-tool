@@ -48,11 +48,11 @@ def sendEmail(df):
             reader = csv.reader(receiver_email)
             next(reader) #skip header row
             for name, email in reader:
-                print(email)
-                print(df["domain"])
-                print(name)
-                print(df["ip"])
-                print(df["rrtype"])
+                # print(email)
+                # print(df["domain"])
+                # print(name)
+                # print(df["ip"])
+                # print(df["rrtype"])
                          
                 server.sendmail(sender_email, email, message.format(name=name, domain=df["domain"], ip=df["ip"], record=df["rrtype"], source=df["source"], first_seen=df["first_seen"], last_seen=df["last_seen"]))
     except Exception as e:
@@ -76,7 +76,7 @@ with open('IP_Theo_Doi.txt') as ipPhishing_list:
         }
         check_limit()
         response = requests.get(url.strip(), headers=header)
-        print(response.status_code)
+        # print(response.status_code)
         try:
             data = response.json()
             # js = json.dumps(data,indent=4)
@@ -108,7 +108,7 @@ with open('IP_Theo_Doi.txt') as ipPhishing_list:
                         # add domain vao list Domain de check
                         listDomain.append(domain)
                         line_count += 1
-                print(listDomain)
+                # print(listDomain)
                 count = 0
                 for domain in df["domain"]:
                     if domain not in listDomain:
