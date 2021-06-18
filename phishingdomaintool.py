@@ -48,8 +48,8 @@ def sendEmail(df):
             reader = csv.reader(receiver_email)
             next(reader) #skip header row
             for name, email in reader:
-                # print(email)
-                # print(df["domain"])
+                print(email)
+                print(df["domain"])
                 # print(name)
                 # print(df["ip"])
                 # print(df["rrtype"])
@@ -63,9 +63,16 @@ def sendEmail(df):
 
 username = "tipdemo02@vcyber.io" 
 key_Api = "c8544915a01e23549372b44644d27937371761c1"
+#add banner like hacker :D :D 
+#https://www.devdungeon.com/content/create-ascii-art-text-banners-python
+#pip install pyfiglet
+import pyfiglet
 
 with open('IP_Theo_Doi.txt') as ipPhishing_list:
     #create Url
+    ascii_banner = pyfiglet.figlet_format("Crossline!!")
+    print(ascii_banner)
+    print("Tool created by Ngoc Cuong ver2.0 created: 18/06/2021")
     urlInitial = "https://api.threatstream.com/api/v1/pdns/ip/"
     for ip in ipPhishing_list:
         url = urlInitial + ip 
