@@ -95,8 +95,11 @@ with open('IP_Theo_Doi.txt') as ipPhishing_list:
         # print(df['domain'])
         # loc list domain xem co bi trung hay khong
         # print(type(df['domain']))
+        check = 0 # check file change or not? if change we do write file if not, we don't write file
+        start = 0 # check file is existed? 
         try:
             with open(f'{ip.strip()}.csv') as ip_csv:
+                start = 1
                 listDomain = []
                 csv_reader = csv.reader(ip_csv, delimiter=",")
                 line_count = 0
@@ -119,6 +122,7 @@ with open('IP_Theo_Doi.txt') as ipPhishing_list:
                 count = 0
                 for domain in df["domain"]:
                     if domain not in listDomain:
+                        check = 1
                         print("Send email:", count)
                         sendEmail(df.loc[count])
                     count += 1
@@ -126,6 +130,8 @@ with open('IP_Theo_Doi.txt') as ipPhishing_list:
                     
         except:
             print(f"{ip.strip()}.csv chua tao do lan dau tien thay ip nay")
-        df_csv = df.to_csv(f'{ip.strip()}.csv')
+
+        if check == 1 or start == 0:
+            df_csv = df.to_csv(f'{ip.strip()}.csv')
         
 
