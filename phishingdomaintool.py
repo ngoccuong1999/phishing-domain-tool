@@ -32,8 +32,8 @@ Good luck!
 def sendEmail(df):
     smtp_server = "smtp.gmail.com"
     port = 587 # for start TLS
-    sender_email = "crosslinevn@gmail.com"
-    password = "6vyVtfJUWr8WjEc"
+    sender_email = "thanthien2kk@gmail.com"
+    password = "qwerty@123"
     # Create a secure SSL context
     context = ssl.create_default_context()
     #Try to log in to server and send email
@@ -54,7 +54,7 @@ def sendEmail(df):
                 # print(df["ip"])
                 # print(df["rrtype"])
                          
-                server.sendmail(sender_email, email, message.format(name=name, domain=df["domain"], ip=df["ip"], record=df["rrtype"], source=df["source"], first_seen=df["first_seen"], last_seen=df["last_seen"]))
+                server.sendmail(sender_email, email, message.format(name=name, domain=df["domain"].replace(".","[.]"), ip=df["ip"], record=df["rrtype"], source=df["source"], first_seen=df["first_seen"], last_seen=df["last_seen"]))
     except Exception as e:
         #Print any error messages to stdout
         print(e)
@@ -72,7 +72,7 @@ with open('IP_Theo_Doi.txt') as ipPhishing_list:
     #create Url
     ascii_banner = pyfiglet.figlet_format("Crossline!!")
     print(ascii_banner)
-    print("Tool created by Ngoc Cuong ver2.0 created: 18/06/2021")
+    print("Tool created by Ngoc Cuong ver2.0 18/06/2021")
     urlInitial = "https://api.threatstream.com/api/v1/pdns/ip/"
     for ip in ipPhishing_list:
         url = urlInitial + ip 
