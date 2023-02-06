@@ -33,7 +33,7 @@ def sendEmail(df):
     smtp_server = "smtp.gmail.com"
     port = 587 # for start TLS
     sender_email = "thanthien2kk@gmail.com"
-    password = "qwerty@123"
+    password = ""
     # Create a secure SSL context
     context = ssl.create_default_context()
     #Try to log in to server and send email
